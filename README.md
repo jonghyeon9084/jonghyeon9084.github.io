@@ -20,3 +20,7 @@ GitHub 저장소 Settings → Pages → Deploy from a branch → main / (root)�
 ## 콘텐츠 기준
 
 2026-09-27 제공 자료 기준. 진행 중 기능은 완료 성과로 표현하지 않았습니다. POCO의 수치는 팀 통합 결과와 개인 담당을 구분합니다. PLC 시간 단축률은 원시 측정값에서 재계산했습니다. 원본 프로필·팀 문서·학습 데이터는 공개 저장소에 포함하지 않습니다.
+
+## 이미지 출처
+
+- `assets/stm32-robot-car.webp`: 제공된 [STM32 발표자료](https://canva.link/mymddp2p08ayiq6) 7페이지의 실제 로봇카·로봇팔 통합 시제품 사진. 팀 결과물이며 차량 하드웨어·IMU 주행 제어 담당을 캡션으로 구분했습니다.
