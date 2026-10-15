@@ -1,18 +1,72 @@
 document.querySelector('#print').addEventListener('click', () => window.print());
+
+const dialog = document.querySelector('#image-dialog');
+let lastImageLink;
+document.querySelectorAll('[data-lightbox]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (!dialog?.showModal) return;
+    event.preventDefault();
+    lastImageLink = link;
+    const original = link.querySelector('img');
+    const image = dialog.querySelector('img');
+    image.src = link.href;
+    image.alt = original.alt;
+    dialog.querySelector('.dialog-caption').textContent = original.alt;
+    dialog.showModal();
+    document.body.classList.add('modal-open');
+  });
+});
+dialog?.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+dialog?.addEventListener('click', event => {
+  if (event.target !== dialog) return;
+  const box = dialog.getBoundingClientRect();
+  if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+});
+dialog?.addEventListener('close', () => {
+  document.body.classList.remove('modal-open');
+  lastImageLink?.focus({ preventScroll: true });
+});
+document.querySelectorAll('.video-launch').forEach(button => {
+  button.addEventListener('click', () => {
+    const shell = button.closest('.embed-shell');
+    const frame = document.createElement('iframe');
+    frame.src = shell.dataset.video;
+    frame.title = shell.dataset.title;
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    shell.replaceChildren(frame);
+    frame.focus();
+  });
+});
+document.querySelectorAll('video').forEach(video => {
+  video.addEventListener('play', () => {
+    document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
+  });
+});
 const navLinks = [...document.querySelectorAll('nav a')];
 const sections = [...document.querySelectorAll('.project-section, #profile')];
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const id = entry.target.id === 'ai-two' ? 'ai-one' : entry.target.id;
-      navLinks.forEach(link => {
-        const active = link.getAttribute('href') === `#${id}`;
-        link.classList.toggle('active', active);
-        if (active) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    }
-  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
-  sections.forEach(section => observer.observe(section));
-}
+let navFramePending = false;
+const updateNav = () => {
+  navFramePending = false;
+  const marker = document.querySelector('.site-header').getBoundingClientRect().bottom + 80;
+  const current = sections.find(section => {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= marker && rect.bottom > marker;
+  });
+  navLinks.forEach(link => {
+    const active = current && link.getAttribute('href') === `#${current.id}`;
+    link.classList.toggle('active', Boolean(active));
+    if (active) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+};
+const scheduleNav = () => {
+  if (navFramePending) return;
+  navFramePending = true;
+  requestAnimationFrame(updateNav);
+};
+window.addEventListener('scroll', scheduleNav, { passive: true });
+window.addEventListener('resize', scheduleNav);
+window.addEventListener('load', scheduleNav);
+updateNav();
