@@ -1,6 +1,6 @@
 # 콘텐츠·미디어 출처
 
-사용자가 제공한 프로젝트 자료에서 실제 사진과 시연 영상을 가져왔습니다. 생성 이미지나 가상의 성능 지표는 사용하지 않았습니다.
+사용자가 제공한 프로젝트 자료에서 실제 사진과 시연 영상을 가져왔습니다. 가상의 성능 지표는 사용하지 않았습니다. 데이터 수집 예시의 얼굴은 개인정보 보호를 위해 모자이크 처리했습니다.
 
 ## 이력서와 구성
 
@@ -15,7 +15,7 @@
 | `amr-navigation.mp4`, `amr-navigation.webp` | 같은 발표자료 10페이지의 주행 시연 및 미리보기. 발표자료의 재생 속도 유지. |
 | `stm32-robot-car.webp` | [STM32 발표자료](https://canva.link/mymddp2p08ayiq6) 7페이지, 기존 사이트의 실제 시제품 사진. |
 | `vision-demo.mp4`, `vision-demo.webp` | [AI 1차 결과 발표자료](https://drive.google.com/file/d/10GqHqObUGTM4M36rndEeOvd0S6XkdPWK/view) 8페이지의 통합 시연. |
-| `face-data.webp` | 같은 AI 1차 자료 19페이지의 직접 촬영 데이터 예시. |
+| `face-data-private.png` | 같은 AI 1차 자료 19페이지의 직접 촬영 데이터 예시. 2026-10-16 사용자 요청에 따라 여섯 얼굴 모두 모자이크 처리. |
 | `poco-front.webp`, `poco-arm.webp`, `poco-architecture.webp` | [POCO 개발완료보고서](https://drive.google.com/file/d/1e4-8anClCcBkpaqfTVRHoVjOUQRIE6rJ/view)의 시제품 정면·측면과 시스템 구성도. |
 | POCO YouTube 플레이어 | 개발완료보고서 3페이지에 연결된 [팀 통합 시연](https://youtu.be/UHQtAFz2T6M). |
 | `plc-demo.mp4` | [PLC 발표자료](https://drive.google.com/file/d/16evFtzF2HJ6Xl9evopYYR-tJwNN1Dgkg/view) 4페이지의 공정·HMI 시연. |
@@ -23,6 +23,8 @@
 | `plc-system.webp` | 기존 사이트에 포함된 실제 PLC 장비 사진. |
 
 WebP 파일은 원본 자료의 이미지를 웹 전송용으로 변환했습니다. 팀 결과물은 페이지의 캡션과 담당 범위에서 구분합니다.
+
+얼굴 모자이크에는 내장 이미지 편집 도구를 사용했습니다. 편집 지시: 여섯 얼굴 전체에 강한 사각 모자이크를 적용하고, 원본의 파일명·카드 배열·촬영 화면과 나머지 정보를 유지. 본문 및 확대 보기 모두 모자이크 파일을 사용하며, 기존 비처리 파일은 현재 배포 파일에서 제외했습니다. 이전 Git 커밋 기록은 변경하지 않았습니다.
 
 ## 기술 설명의 근거
 
