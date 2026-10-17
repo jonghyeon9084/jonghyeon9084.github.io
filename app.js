@@ -1,4 +1,17 @@
-// The PDF link downloads the verified export. Ctrl+P uses print.css.
+// Load off-screen images before opening the browser's print / Save as PDF dialog.
+document.querySelector('#print').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  try {
+    document.querySelectorAll('img[src]').forEach(image => { image.loading = 'eager'; });
+    await document.fonts.ready;
+    await Promise.all([...document.querySelectorAll('img[src]')].map(image => image.decode().catch(() => {})));
+    window.print();
+  } finally {
+    button.disabled = false;
+  }
+});
+
 window.addEventListener('beforeprint', () => {
   document.querySelectorAll('video').forEach(video => video.pause());
   document.querySelector('#image-dialog')?.close();
