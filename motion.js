@@ -17,9 +17,9 @@
     if (revealed.has(element) || !canAnimate()) return;
     revealed.add(element);
     const animation = element.animate([
-      { opacity: 0, transform: `translateY(${media ? 26 : 20}px)${media ? ' scale(.985)' : ''}` },
+      { opacity: 0, transform: `translateY(${media ? 18 : 14}px)${media ? ' scale(.992)' : ''}` },
       { opacity: 1, transform: 'none' }
-    ], { duration: media ? 900 : 760, delay, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+    ], { duration: media ? 1600 : 1400, delay, easing: 'cubic-bezier(.22,.45,.3,1)', fill: 'backwards' });
     animations.add(animation);
     const clear = () => animations.delete(animation);
     animation.onfinish = clear;
@@ -62,8 +62,8 @@
         }
         const group = element.parentElement;
         const stagger = group.matches('.two-col, .skills, .media-gallery, .profile-grid')
-          ? Math.min([...group.children].indexOf(element), 2) * 80 : 0;
-        reveal(element, stagger, element.matches('figure, .media-story'));
+          ? Math.min([...group.children].indexOf(element), 2) * 160 : 0;
+        reveal(element, 80 + stagger, element.matches('figure, .media-story'));
       });
     }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
     targets.forEach(element => { if (!revealed.has(element)) observer.observe(element); });
@@ -95,7 +95,7 @@
   start();
   if (scrollY < 40 && !location.hash && canAnimate()) {
     document.querySelectorAll('.intro-copy > *, .portrait-panel').forEach((element, index) => {
-      if (element.getBoundingClientRect().top < innerHeight) reveal(element, index * 80);
+      if (element.getBoundingClientRect().top < innerHeight) reveal(element, 100 + index * 180);
     });
   }
 })();
