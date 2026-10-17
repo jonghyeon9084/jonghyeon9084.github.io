@@ -4,7 +4,6 @@
   margin: 14mm 13mm 16mm;
   @top-left { content: 'LEE JONGHYEON'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
   @top-right { content: 'ROBOTICS / PLC'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
-  @bottom-left { content: 'PORTFOLIO / 2026'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
   @bottom-right { content: counter(page) ' / ' counter(pages); font: 8pt Arial, sans-serif; color: #303030; }
 }
 @page :first { @top-left { content: none; } @top-right { content: none; } }
