@@ -1,4 +1,8 @@
-document.querySelector('#print').addEventListener('click', () => window.print());
+// The PDF link downloads the verified export. Ctrl+P uses print.css.
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('video').forEach(video => video.pause());
+  document.querySelector('#image-dialog')?.close();
+});
 
 const dialog = document.querySelector('#image-dialog');
 let lastImageLink;
@@ -25,19 +29,6 @@ dialog?.addEventListener('click', event => {
 dialog?.addEventListener('close', () => {
   document.body.classList.remove('modal-open');
   lastImageLink?.focus({ preventScroll: true });
-});
-document.querySelectorAll('.video-launch').forEach(button => {
-  button.addEventListener('click', () => {
-    const shell = button.closest('.embed-shell');
-    const frame = document.createElement('iframe');
-    frame.src = shell.dataset.video;
-    frame.title = shell.dataset.title;
-    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    frame.allowFullscreen = true;
-    frame.referrerPolicy = 'strict-origin-when-cross-origin';
-    shell.replaceChildren(frame);
-    frame.focus();
-  });
 });
 document.querySelectorAll('video').forEach(video => {
   video.addEventListener('play', () => {

@@ -1,0 +1,65 @@
+/* Separate print layout: every article starts on a fresh A4 page. */
+@page { size: A4 portrait; margin: 12mm; }
+html { scroll-behavior: auto; }
+body { background: #fff; font-size: 9pt; line-height: 1.55; overflow: visible; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+main { width: auto; max-width: none; margin: 0; padding: 0; }
+.site-header, .skip, #work, .hero-actions, .intro-bottom, .back-top, .zoom-label, dialog, video, iframe { display: none !important; }
+.sheet, .project-page, .project-page + .project-page, .profile { height: auto; min-height: 0; padding: 0; margin: 0; border: 0; overflow: visible; break-before: page; break-after: auto; }
+.project-section, .project-phase { padding: 0; margin: 0; border: 0; break-before: auto; }
+.intro { display: grid; grid-template-columns: 1fr 50mm; gap: 10mm; break-before: auto; padding-top: 15mm; }
+.intro h1 { font-size: 30pt; line-height: 1.3; letter-spacing: -1pt; }
+.intro-text { font-size: 13pt; }.intro-detail { font-size: 10pt; }
+.portrait-panel { display: block; width: 48mm; max-width: none; }
+.portrait { width: 48mm; height: auto; max-height: 65mm; }
+.portrait-caption strong { font-size: 12pt; }.portrait-caption small { font-size: 9pt; }
+/* Profile follows the compact introduction on the first page. */
+.profile { break-before: auto; margin-top: 10mm; }
+.profile > .eyebrow, .contact-heading { display: none; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 9mm; padding-top: 5mm; }
+.profile-grid h2 { font-size: 18pt; }.profile-grid > div > p:not(.profile-title), .profile-title { font-size: 9pt; }
+.profile-facts > div { font-size: 8pt; padding: 2mm 0; grid-template-columns: 15mm 1fr; }
+.contact-email { font-size: 10pt; margin-top: 5mm; }.text-link { font-size: 9pt; }
+.skills { display: grid; grid-template-columns: repeat(3,1fr); gap: 5mm; padding: 4mm 0; margin-top: 5mm; }
+.skills b { font-size: 7pt; }.skills p { font-size: 8pt; }
+.page-top { margin-bottom: 3mm; }.eyebrow, .page-count { font-size: 7pt; letter-spacing: .6pt; }
+.project-heading { display: flex; gap: 5mm; }.period { font-size: 8pt; margin: 0; white-space: nowrap; }
+h2 { font-size: 21pt; line-height: 1.3; margin: 0 0 4mm; letter-spacing: -.8pt; break-after: avoid; }
+h3 { font-size: 11pt; line-height: 1.4; margin: 0 0 3mm; break-after: avoid; }
+p { margin: 0 0 3mm; orphans: 3; widows: 3; }
+.lead, .two-col p { font-size: 9pt; line-height: 1.65; margin-bottom: 4mm; }
+.two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 7mm; margin: 5mm 0; }
+.two-col > div { margin-bottom: 0; min-width: 0; }
+.role-list > li { margin-bottom: 3mm; gap: 3mm; }.role-list strong { font-size: 9pt; }.role-list p { margin: 1mm 0 0; }
+.architecture, .status-panel, .editorial-panel { padding: 4mm; border-radius: 2mm; }
+.arch-host { padding: 3mm; }.arch-pair > div { padding: 2mm; }.arch-pair span, .arch-host span { font-size: 8pt; }
+.arch-connector { padding: 2mm 0; font-size: 7pt; }.arch-next { padding: 2mm; margin-top: 2mm; font-size: 8pt; }
+.mini-label { font-size: 7pt !important; margin-bottom: 3mm !important; }
+.note { font-size: 7.5pt !important; line-height: 1.5 !important; margin-top: 2mm !important; }
+.project-meta { gap: 4mm; padding: 3mm 0; }.project-meta strong { font-size: 8pt; }.project-meta span { font-size: 7pt; }
+.gallery-figure, .video-figure, .product-photo, .architecture, .status-panel, .result-grid, .insight, table, .project-meta, .page-footer, .media-gallery { break-inside: avoid; }
+.gallery-figure { margin: 3mm 0; }.zoom-image img { height: auto; max-height: 48mm; width: 100%; object-fit: contain; aspect-ratio: auto; transform: none; }
+.full-bleed img { max-height: 43mm; }.product-photo, .plc-photo { padding: 3mm; }.product-photo img, .stm-photo img { height: 78mm; }
+.media-gallery { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4mm; margin: 4mm 0; }
+.media-gallery.three-up { grid-template-columns: repeat(3,minmax(0,1fr)); }.three-up > figure:last-child { grid-column: auto; max-width: none; }
+.media-gallery img { max-height: 35mm; }.media-gallery figure { margin: 0; }
+.video-figure { margin: 4mm 0; }.media-topline { padding: 2mm 0; font-size: 7pt; }.media-topline span:first-child { font-size: 7pt; }
+.print-video-poster { display: block; width: 100%; height: 38mm; object-fit: contain; background: #f0f4f8; }
+figcaption, .video-figure figcaption, .gallery-figure figcaption { font-size: 7pt; line-height: 1.5; margin: 2mm 0 0; }
+.video-figure figcaption { display: flex; gap: 4mm; }.video-figure figcaption a { font-size: 7pt; }
+.media-story { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 5mm 0; }.media-story img { max-height: 50mm; }
+.media-story h3 { font-size: 15pt; }.media-story p:not(.eyebrow) { font-size: 9pt; }
+.page-footer { font-size: 7pt; padding-top: 3mm; margin-top: 4mm; gap: 4mm; }.tags { gap: 1mm; }.tags span { font-size: 6.5pt; padding: 1mm 2mm; }.footer-links { gap: 3mm; }
+.metric { padding: 4mm; margin-top: 4mm; }.metric > strong { font-size: 18pt; }.metric p { font-size: 8pt; }
+.status-panel > div { padding: 3mm 0; }.status-panel p { font-size: 8pt; }.state { font-size: 7pt; }
+.insight { display: flex; gap: 4mm; padding: 3mm 4mm; margin: 4mm 0; }.insight p { font-size: 8pt; }.insight strong { font-size: 8pt; }
+.step-flow { margin: 0 0 4mm; }.step-flow > span { font-size: 8pt; padding: 2mm; }
+.control-summary { margin: 0 0 4mm; padding: 2mm; }.control-summary > span { font-size: 8pt; padding: 1mm; }
+.feature-grid > div { padding: 3mm; }.feature-grid span { font-size: 9pt; }.feature-grid b { font-size: 7pt; }
+.editorial-panel h3 { font-size: 14pt; }.case-line { padding: 3mm 0; gap: 3mm; }.case-line p { font-size: 9pt !important; }
+.numbered { margin: 0; }.numbered li { margin-bottom: 3mm; }.numbered strong { font-size: 9pt; }
+.pipeline-card { padding: 4mm; }.pipeline-card b { font-size: 10pt; }.pipeline-card span { font-size: 8pt; }
+.result-grid > div { padding: 4mm 3mm; }.result-grid strong { font-size: 19pt; }.result-grid span { font-size: 8pt; }.result-grid > div > small { font-size: 7pt; }
+.award { font-size: 9pt; margin-bottom: 3mm; }.plain-list { font-size: 9pt; }.plain-list li { margin-bottom: 2mm; }
+table { margin: 3mm 0; }th, td { padding: 2mm; font-size: 9pt; }caption { font-size: 8pt; }
+.bar-chart { padding: 4mm; }.bar-chart > div { margin-bottom: 4mm; font-size: 8pt; }.bar-chart strong { font-size: 13pt; }
+.site-footer { font-size: 7pt; padding: 4mm 0 0; margin-top: 5mm; break-inside: avoid; }.site-footer a { display: none; }

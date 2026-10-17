@@ -14,15 +14,17 @@
 | `amr-factory.webp` | [ROS 2 1차 발표자료](https://www.canva.com/design/DAHXgSipP4s/DYR3L0axDWiAUCqLQnEEKg/view)의 실제 공정 전경. |
 | `amr-navigation.mp4`, `amr-navigation.webp` | 같은 발표자료 10페이지의 주행 시연 및 미리보기. 발표자료의 재생 속도 유지. |
 | `stm32-robot-car.webp` | [STM32 발표자료](https://canva.link/mymddp2p08ayiq6) 7페이지, 기존 사이트의 실제 시제품 사진. |
-| `vision-demo.mp4`, `vision-demo.webp` | [AI 1차 결과 발표자료](https://drive.google.com/file/d/10GqHqObUGTM4M36rndEeOvd0S6XkdPWK/view) 8페이지의 통합 시연. |
+| `vision-demo-private.mp4`, `vision-demo-private.webp` | AI 1차 결과 발표자료 8페이지의 통합 시연. 2026-10-17 얼굴·주변 인물·화면 속 얼굴을 모자이크한 편집본과 대표 이미지. |
 | `face-data-private.png` | 같은 AI 1차 자료 19페이지의 직접 촬영 데이터 예시. 2026-10-16 사용자 요청에 따라 여섯 얼굴 모두 모자이크 처리. |
 | `poco-front.webp`, `poco-arm.webp`, `poco-architecture.webp` | [POCO 개발완료보고서](https://drive.google.com/file/d/1e4-8anClCcBkpaqfTVRHoVjOUQRIE6rJ/view)의 시제품 정면·측면과 시스템 구성도. |
-| POCO YouTube 플레이어 | 개발완료보고서 3페이지에 연결된 [팀 통합 시연](https://youtu.be/UHQtAFz2T6M). |
+| `poco-demo-private.mp4`, `poco-demo-private.webp` | 개발완료보고서 3페이지에 연결된 팀 통합 시연(원본 영상 ID: UHQtAFz2T6M). 2026-10-17 얼굴·태블릿 화면·카메라 미리보기의 얼굴을 모자이크한 편집본과 대표 이미지. |
 | `plc-demo.mp4` | [PLC 발표자료](https://drive.google.com/file/d/16evFtzF2HJ6Xl9evopYYR-tJwNN1Dgkg/view) 4페이지의 공정·HMI 시연. |
 | `plc-process.webp`, `plc-hmi.webp`, `plc-timer.webp`, `plc-teaching.webp` | 같은 PLC 발표자료의 공정 전경, HMI, TTMR 측정, Teaching 화면. |
 | `plc-system.webp` | 기존 사이트에 포함된 실제 PLC 장비 사진. |
 
 WebP 파일은 원본 자료의 이미지를 웹 전송용으로 변환했습니다. 팀 결과물은 페이지의 캡션과 담당 범위에서 구분합니다.
+
+영상 편집은 OpenCV 영역 모자이크와 FFmpeg H.264/AAC 인코딩을 사용했습니다. 원래 길이와 음성을 유지했으며, 얼굴 이동과 장면 전환을 포함하도록 영역을 넉넉히 지정했습니다. 공개 파일과 영상 열기 링크, 인쇄 대표 이미지는 모두 편집본을 사용합니다. 비처리 1차 영상·미리보기는 현재 배포 파일에서 제외했습니다. 외부 YouTube 원본과 이전 Git 기록은 변경하지 않았습니다.
 
 얼굴 모자이크에는 내장 이미지 편집 도구를 사용했습니다. 편집 지시: 여섯 얼굴 전체에 강한 사각 모자이크를 적용하고, 원본의 파일명·카드 배열·촬영 화면과 나머지 정보를 유지. 본문 및 확대 보기 모두 모자이크 파일을 사용하며, 기존 비처리 파일은 현재 배포 파일에서 제외했습니다. 이전 Git 커밋 기록은 변경하지 않았습니다.
 
