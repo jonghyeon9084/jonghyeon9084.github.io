@@ -13,11 +13,11 @@
   let printing = false;
 
   const canAnimate = () => Boolean(Element.prototype.animate) && !reducedMotion.matches && !printMedia.matches && !printing;
-  const reveal = (element, delay = 0, media = false) => {
+  const reveal = (element, delay = 0, media = false, direction = 1) => {
     if (revealed.has(element) || !canAnimate()) return;
     revealed.add(element);
     const animation = element.animate([
-      { opacity: 0, transform: `translateY(${media ? 18 : 14}px)${media ? ' scale(.992)' : ''}` },
+      { opacity: 0, transform: `translateY(${(media ? 18 : 14) * direction}px)${media ? ' scale(.992)' : ''}` },
       { opacity: 1, transform: 'none' }
     ], { duration: media ? 1600 : 1400, delay, easing: 'cubic-bezier(.22,.45,.3,1)', fill: 'backwards' });
     animations.add(animation);
@@ -27,13 +27,14 @@
   };
 
   const candidates = [...document.querySelectorAll([
+    '.intro-copy > *, .portrait-panel',
     '#profile > .eyebrow', '.contact-heading', '.profile-grid > *', '.skills > *',
     '.work-intro', '.project-index', '.project-heading', '.project-page > .lead',
     '.project-meta', '.two-col > *', '.full-bleed', '.video-figure',
     '.media-story', '.media-gallery > figure', '.project-page > .insight',
     '.project-page > .gallery-figure'
   ].join(','))];
-  // Animate whole blocks once, without stacking parent and child effects.
+  // Animate whole blocks without stacking parent and child effects.
   const candidateSet = new Set(candidates);
   const targets = candidates.filter(element => {
     for (let parent = element.parentElement; parent; parent = parent.parentElement) {
@@ -52,21 +53,28 @@
     if (!canAnimate() || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
     observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
         const element = entry.target;
-        observer.unobserve(element);
-        // Anchor navigation and keyboard focus should expose content immediately.
-        if (element.matches(':focus-within') || entry.boundingClientRect.top < header.offsetHeight) {
+        if (!entry.isIntersecting) {
+          // Rearm only after the block leaves the viewport, in either direction.
+          revealed.delete(element);
+          animations.forEach(animation => {
+            if (animation.effect.target === element) animation.cancel();
+          });
+          return;
+        }
+        // Keyboard focus should expose content immediately.
+        if (element.matches(':focus-within')) {
           revealed.add(element);
           return;
         }
         const group = element.parentElement;
         const stagger = group.matches('.two-col, .skills, .media-gallery, .profile-grid')
           ? Math.min([...group.children].indexOf(element), 2) * 160 : 0;
-        reveal(element, 80 + stagger, element.matches('figure, .media-story'));
+        const direction = entry.boundingClientRect.top < header.offsetHeight ? -1 : 1;
+        reveal(element, 80 + stagger, element.matches('figure, .media-story'), direction);
       });
-    }, { threshold: 0, rootMargin: '0px 0px -32px 0px' });
-    targets.forEach(element => { if (!revealed.has(element)) observer.observe(element); });
+    }, { threshold: 0 });
+    targets.forEach(element => observer.observe(element));
   };
 
   const updateScroll = () => {

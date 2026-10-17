@@ -12,7 +12,7 @@
 | --- | --- |
 | `jonghyeon-lee.jpg` | 사용자가 지정한 본인 프로필 사진 원본. 얼굴 보정 없이 사용. |
 | `amr-factory.webp` | [ROS 2 1차 발표자료](https://www.canva.com/design/DAHXgSipP4s/DYR3L0axDWiAUCqLQnEEKg/view)의 실제 공정 전경. |
-| `amr-navigation.mp4`, `amr-navigation.webp` | 같은 발표자료 10페이지의 주행 시연 및 미리보기. 발표자료의 재생 속도 유지. |
+| `amr-process-full.mp4`, `amr-process-full.webp` | [전체 공정 시연 원본](https://drive.google.com/file/d/1x7n2GrBhqKMLjLPc997vzTLRcRZBJvs5/view): `1차_공정_전체맵기준_4배속.mp4`. 178.83초 전체 구간, 1080p·30fps·원본 4배속 유지. 웹 재생용 H.264 압축 및 22초 장면 미리보기. |
 | `stm32-robot-car.webp` | [STM32 발표자료](https://canva.link/mymddp2p08ayiq6) 7페이지, 기존 사이트의 실제 시제품 사진. |
 | `vision-demo.mp4`, `vision-demo.webp` | AI 1차 결과 발표자료 8페이지의 통합 시연. 2026-10-17 사용자 본인 얼굴임을 확인하고 요청에 따라 원본 영상·미리보기로 복원. |
 | `face-data-private.png` | 같은 AI 1차 자료 19페이지의 직접 촬영 데이터 예시. 2026-10-16 사용자 요청에 따라 여섯 얼굴 모두 모자이크 처리. |
