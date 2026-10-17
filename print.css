@@ -2,14 +2,14 @@
 @page {
   size: A4 portrait;
   margin: 14mm 13mm 16mm;
-  @top-left { content: 'LEE JONGHYEON'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #6b7b8d; }
-  @top-right { content: 'ROBOTICS / PLC'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #6b7b8d; }
-  @bottom-left { content: 'PORTFOLIO / 2026'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #6b7b8d; }
-  @bottom-right { content: counter(page) ' / ' counter(pages); font: 8pt Arial, sans-serif; color: #265fdb; }
+  @top-left { content: 'LEE JONGHYEON'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
+  @top-right { content: 'ROBOTICS / PLC'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
+  @bottom-left { content: 'PORTFOLIO / 2026'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
+  @bottom-right { content: counter(page) ' / ' counter(pages); font: 8pt Arial, sans-serif; color: #303030; }
 }
 @page :first { @top-left { content: none; } @top-right { content: none; } }
 html { scroll-behavior: auto; }
-body { background: #fff; font-size: 9pt; line-height: 1.55; overflow: visible; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { background: #ffffff; font-size: 9pt; line-height: 1.55; overflow: visible; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 main { width: auto; max-width: none; margin: 0; padding: 0; }
 .site-header, .skip, #work, .hero-actions, .intro-bottom, .back-top, .zoom-label, dialog, video, iframe { display: none !important; }
 .sheet, .project-page, .project-page + .project-page, .profile { height: auto; min-height: 0; padding: 0; margin: 0; border: 0; overflow: visible; break-before: page; break-after: auto; }
@@ -51,7 +51,7 @@ p { margin: 0 0 3mm; orphans: 3; widows: 3; }
 .media-gallery.three-up { grid-template-columns: repeat(3,minmax(0,1fr)); }.three-up > figure:last-child { grid-column: auto; max-width: none; }
 .media-gallery img { max-height: 35mm; }.media-gallery figure { margin: 0; }
 .video-figure { margin: 4mm 0; }.media-topline { padding: 2mm 0; font-size: 7pt; }.media-topline span:first-child { font-size: 7pt; }
-.print-video-poster { display: block; width: 100%; height: 38mm; object-fit: contain; background: #f0f4f8; }
+.print-video-poster { display: block; width: 100%; height: 38mm; object-fit: contain; background: #f2f2f2; }
 figcaption, .video-figure figcaption, .gallery-figure figcaption { font-size: 7pt; line-height: 1.5; margin: 2mm 0 0; }
 .video-figure figcaption { display: flex; gap: 4mm; }.video-figure figcaption a { font-size: 7pt; }
 .media-story { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin: 5mm 0; }.media-story img { max-height: 50mm; }
@@ -73,18 +73,18 @@ table { margin: 3mm 0; }th, td { padding: 2mm; font-size: 9pt; }caption { font-s
 .site-footer { font-size: 7pt; padding: 4mm 0 0; margin-top: 5mm; break-inside: avoid; }.site-footer a { display: none; }
 
 /* Editorial typography, consistent page structure, and a compact cover. */
-:root { --ink:#192e46; --accent:#265fdb; --muted:#5e6d7e; --line:#dce4ee; --soft:#f1f5fa; }
+:root { --ink:#202020; --accent:#303030; --muted:#686868; --line:#dedede; --soft:#f2f2f2; }
 body { color:var(--ink); }
 .project-page, .project-page + .project-page { display:flex; flex-direction:column; min-height:259mm; }
 .project-page > * { flex-shrink:0; }
 .project-page .two-col { flex:0 0 auto; }
 .page-top { padding:3mm 0 0; border-top:1.2mm solid var(--ink); margin-bottom:5mm; }
 .page-top .eyebrow { color:var(--accent); font-weight:700; }
-.page-count { color:#6b7b8d; font-size:6.5pt; }
+.page-count { color:#737373; font-size:6.5pt; }
 h2 { font-size:23pt; font-weight:800; letter-spacing:-.8pt; }
 h3 { font-weight:700; }
 .page-footer { margin-top:auto; padding-top:3mm; }
-.page-footer .tags span { border:1px solid #e2e8f0; background:white; border-radius:1mm; }
+.page-footer .tags span { border:1px solid #e7e7e7; background:white; border-radius:1mm; }
 .print-overview .lead { margin-bottom:3mm; }
 .print-overview .two-col { margin:4mm 0; }
 .full-bleed .zoom-image { background:var(--soft); border-radius:1.5mm; }
@@ -102,7 +102,7 @@ h3 { font-weight:700; }
 .print-notes .two-col p { font-size:10pt; line-height:1.85; }
 .print-notes .case-line p { font-size:10pt !important; }
 .print-notes .note { font-size:8pt !important; line-height:1.7 !important; }
-.print-notes .insight { padding:5mm; margin:5mm 0 9mm; background:#f0f5fd; border-left:1mm solid var(--accent); }
+.print-notes .insight { padding:5mm; margin:5mm 0 9mm; background:#f3f3f3; border-left:1mm solid var(--accent); }
 .print-notes .insight p { font-size:9pt; line-height:1.8; }
 .print-notes .insight strong { min-width:24mm; font-size:8pt; }
 .print-notes h3 { font-size:12pt; margin-bottom:4mm; }
@@ -148,7 +148,7 @@ h3 { font-weight:700; }
 .skills p { line-height:1.7; }.skills b { font-size:7pt; }
 .print-project-list { display:block; margin-top:6mm; border-top:1px solid var(--line); padding-top:4mm; }
 .print-project-list > p { font:7pt Arial,sans-serif; letter-spacing:1.2pt; color:var(--muted); margin:0 0 3mm; }
-.print-project-list > a { display:flex; align-items:baseline; gap:5mm; padding:2mm 0; border-bottom:1px solid #edf0f5; font-size:9pt; }
+.print-project-list > a { display:flex; align-items:baseline; gap:5mm; padding:2mm 0; border-bottom:1px solid #f0f0f0; font-size:9pt; }
 .print-project-list b { font:8pt Arial,sans-serif; color:var(--accent); }
 .print-project-list small { margin-left:auto; font:8pt Arial,sans-serif; color:var(--muted); }
 .site-footer { display:none; }

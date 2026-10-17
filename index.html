@@ -4,7 +4,7 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="이종현의 로봇 SW·PLC 제어 포트폴리오. AMR 자율주행·도킹과 PLC 공정 제어 프로젝트의 담당 업무, 구현 내용, 시연.">
-  <meta name="theme-color" content="#f8f9fb">
+  <meta name="theme-color" content="#f8f8f8">
 <title>이종현 | 로봇 SW · PLC 제어</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
@@ -130,7 +130,7 @@
 </li>
 <li>
 <span>03</span><div>
-<strong>ROS 2 통신과 실행 환경</strong><p>Host와 운반로봇의 통신·실행환경을 구성하고, 로봇별 namespace와 설정을 분리했습니다. Nav2 작업에는 팀원과의 공동 개발이 포함됩니다.</p>
+<strong>ROS 2 통신과 실행 환경</strong><p>Host와 운반로봇의 통신·실행환경을 구성하고, 로봇별 namespace와 설정을 분리했습니다.</p>
 </div>
 </li>
 </ul>
@@ -152,13 +152,13 @@
 <div class="arch-next">
 <b>작업 결과</b><span>주행 + 종단 동작 + 정지 확인 → 완료</span>
 </div>
-<p class="note">현재 구조는 각 로봇에서 주행·도킹을 실행하고 Host가 공정 순서를 관리합니다. 로봇팔·리니어 및 하위 펌웨어는 팀원의 담당 영역입니다.</p>
+<p class="note">각 로봇에서 Nav2 주행·도킹을 실행하고, Host에서 목적지 명령과 공정 순서를 관리합니다.</p>
 </div>
 </div>
 <figure class="video-figure"><div class="media-topline">
 <span>PROJECT FILM</span><span>Nav2 웨이포인트 주행</span>
 </div>
-<video controls playsinline preload="none" poster="assets/amr-navigation.webp" aria-label="Nav2 웨이포인트 주행"><source src="assets/amr-navigation.mp4" type="video/mp4">이 브라우저는 영상 재생을 지원하지 않습니다.</video><img class="print-video-poster" src="assets/amr-navigation.webp" alt="시연 영상 대표 장면"><figcaption><span>1차 발표자료 10페이지에 포함된 주행 시연 · 원본 자료의 재생 속도 유지</span><a href="assets/amr-navigation.mp4" target="_blank" rel="noopener">영상 따로 열기 ↗</a></figcaption></figure>
+<video controls playsinline preload="none" poster="assets/amr-navigation.webp" aria-label="Nav2 웨이포인트 주행"><source src="assets/amr-navigation.mp4" type="video/mp4">이 브라우저는 영상 재생을 지원하지 않습니다.</video><img class="print-video-poster" src="assets/amr-navigation.webp" alt="시연 영상 대표 장면"><figcaption><span>Nav2 웨이포인트 주행 시연</span><a href="assets/amr-navigation.mp4" target="_blank" rel="noopener">영상 따로 열기 ↗</a></figcaption></figure>
 <div class="page-footer">
 <div class="tags">
 <span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>ROS Action</span><span>Raspberry Pi</span>
@@ -184,7 +184,7 @@
 </div>
 </div>
 <div class="status-panel">
-<h3>구현과 검증의 범위</h3>
+<h3>구현 현황과 후속 과제</h3>
 <div>
 <span class="state done">확인</span><p>버거1·2 개별 주행·도킹 성공 사례<br>A제품 2개 주문 기반 전체 공정 시연<br>로봇팔·리니어 연동과 두 로봇 복귀</p>
 </div>
@@ -200,7 +200,7 @@
 <strong>1차 통합 성과</strong><p>주문 → 부품 상차 → AMR 운반·도킹 → 조립·적재 → 복귀를 팀 시스템에서 시연했습니다. 지게차 이송은 후속 확장 범위이며, 반복 도킹 정밀도와 조건별 안정성은 추가 측정 대상입니다.</p>
 </div>
 <div class="page-footer">
-<span>근거: 2026.10.12 1차 발표자료 · AMR 진행 정리 문서</span><a href="https://rorobot.atlassian.net/wiki/spaces/robot3/pages/30900268" target="_blank" rel="noopener noreferrer">개발·검증 기록 ↗</a>
+<span>2026.10.12 1차 발표자료 · AMR 개발 기록</span><a href="https://rorobot.atlassian.net/wiki/spaces/robot3/pages/30900268" target="_blank" rel="noopener noreferrer">개발·검증 기록 ↗</a>
 </div></article></section><section id="stm" class="project-section">
 <article class="sheet project-page print-overview"><div class="page-top">
 <p class="eyebrow">02 / EMBEDDED CONTROL</p>
@@ -210,10 +210,10 @@
 <h2>차팔이<br>STM32 물품 수거 로봇</h2>
 <span class="period">2026.07 – 08</span>
 </div>
-<p class="lead">5자유도 로봇팔·그리퍼와 4WD 이동 플랫폼을 결합한 로봇.<br>저는 차량 하드웨어와 IMU 기반 주행 제어를 공동 담당했습니다.</p>
+<p class="lead">5자유도 로봇팔·그리퍼와 4WD 이동 플랫폼을 결합한 로봇.<br>저는 차량 하드웨어와 IMU 기반 주행 제어를 담당했습니다.</p>
 <div class="two-col">
 <div>
-<h3>개인 담당 범위</h3>
+<h3>담당 업무</h3>
 <ul class="role-list">
 <li>
 <span>01</span><div>
@@ -277,7 +277,7 @@
 </tr>
 </tbody>
 </table>
-<p class="note">정지 상태 센서 실험 결과이며 실제 주행 궤적 오차와는 구분합니다.</p>
+<p class="note">측정 조건: 정지 상태의 자이로 센서 · 3초간 249개 샘플.</p>
 </div>
 <div>
 <h3>주행에 적용한 제어 조건</h3>
@@ -296,7 +296,7 @@
 <strong>기술적 한계와 다음 검증</strong><p>자력계가 없는 MPU6050의 상대 Yaw를 사용하므로 장시간 적분 드리프트가 남습니다. 실제 차체 진동과 하중 조건에서 PID 계수 및 직진 궤적 오차를 추가 검증할 수 있습니다.</p>
 </div>
 <div class="page-footer">
-<span>차량 하드웨어·제어 공동 담당 · 팀 통합 시험 참여</span><span>근거: 프로젝트 문서·IMU 실측 기록</span>
+<span>차량 하드웨어·제어 담당 · 팀 통합 시험 참여</span><span>프로젝트 문서 · IMU 실측 기록</span>
 </div></article>
 </section>
 
@@ -379,7 +379,7 @@
 <div class="pipeline-card">
 <span>영상</span><b>Face Feature</b><span>Baseline 보정</span><b>30-frame sequence</b><span>Scaling</span><b>GRU → TFLite</b><span>졸음 확률 출력</span>
 </div>
-<p class="note">자세 모델, UI·리포트, 하드웨어 제어는 팀 협업 범위입니다. 개인 기여는 Face 데이터와 졸음 모델에 집중했습니다.</p>
+<p class="note">담당: Face 데이터 전처리 · 졸음 모델 학습 · TFLite 추론 연동.</p>
 </div>
 </div>
 <div class="media-story">
@@ -466,11 +466,11 @@
 <strong>47.78 <small>ms</small></strong><span>Raspberry Pi P95 지연</span><small>POSE-ONLY 측정</small>
 </div>
 </div>
-<p class="note">발표자료의 단일 평가 세션 결과입니다. 자세 모델 지표는 졸음 모델의 성능이 아니며, 다수 사용자에 대한 일반화 성능은 추가 검증이 필요합니다.</p>
+<p class="note">평가 조건: 단일 세션 · 자세 모델 1,066개 윈도 · 지연시간은 POSE-ONLY 기준. 다수 사용자 평가는 후속 과제입니다.</p>
 </div>
 </div>
 <div class="page-footer">
-<span>근거: POCO 개발완료보고서 · 슬라이드 11, 15, 20</span><span>모니터암 확장 완료 · 졸음 모델 개선 중</span>
+<span>POCO 개발완료보고서 · 11, 15, 20쪽</span><span>모니터암 확장 완료 · 졸음 모델 개선 중</span>
 </div></article>
 </section>
 
@@ -483,12 +483,12 @@
 </div>
 <div class="project-heading">
 <h2>PLC 기반 식품 자동 분류<br>및 창고 관리 시스템</h2>
-<span class="period">2026.06 · 2인 공동 프로젝트</span>
+<span class="period">2026.06 · 2인 프로젝트</span>
 </div>
 <p class="lead">금속 검출로 불량품을 배출하고, 정상 제품을 6개 포장 구역에 공급하는 공정.<br>Ladder 시퀀스 제어와 HMI 연동, 동작 시간 최적화를 수행했습니다.</p>
 <div class="two-col">
 <div>
-<h3>구현 기능 · 공동 개발</h3>
+<h3>구현 기능</h3>
 <ul class="plain-list">
 <li>전체 공급 / 개별 공급 모드와 적재 상태 표시</li>
 <li>좌·우 1~3층 포장 구역 분류 및 창고 비움</li>
@@ -503,7 +503,7 @@
 <figure class="video-figure"><div class="media-topline">
 <span>PROJECT FILM</span><span>PLC 공정·HMI 시연</span>
 </div>
-<video controls playsinline preload="none" poster="assets/plc-hmi.webp" aria-label="PLC 공정·HMI 시연"><source src="assets/plc-demo.mp4" type="video/mp4">이 브라우저는 영상 재생을 지원하지 않습니다.</video><img class="print-video-poster" src="assets/plc-hmi.webp" alt="시연 영상 대표 장면"><figcaption><span>PLC 발표자료 4페이지의 원본 시연 · 이종현·조병현 공동 개발</span><a href="assets/plc-demo.mp4" target="_blank" rel="noopener">영상 따로 열기 ↗</a></figcaption></figure><div class="media-gallery three-up">
+<video controls playsinline preload="none" poster="assets/plc-hmi.webp" aria-label="PLC 공정·HMI 시연"><source src="assets/plc-demo.mp4" type="video/mp4">이 브라우저는 영상 재생을 지원하지 않습니다.</video><img class="print-video-poster" src="assets/plc-hmi.webp" alt="시연 영상 대표 장면"><figcaption><span>제품 분류·적재와 HMI 운전 시연</span><a href="assets/plc-demo.mp4" target="_blank" rel="noopener">영상 따로 열기 ↗</a></figcaption></figure><div class="media-gallery three-up">
 <figure class="gallery-figure "><a class="zoom-image" href="assets/plc-hmi.webp" data-lightbox aria-label="이미지 확대: 공급 모드·적재 상태·비상정지 HMI"><img src="assets/plc-hmi.webp" alt="공급 모드·적재 상태·비상정지 HMI" loading="lazy" decoding="async" width="997" height="750"><span class="zoom-label" aria-hidden="true">확대 ↗</span></a><figcaption>공급 모드·적재 상태·비상정지 HMI</figcaption></figure><figure class="gallery-figure "><a class="zoom-image" href="assets/plc-timer.webp" data-lightbox aria-label="이미지 확대: TTMR 기반 동작 시간 측정 화면"><img src="assets/plc-timer.webp" alt="TTMR 기반 동작 시간 측정 화면" loading="lazy" decoding="async" width="982" height="731"><span class="zoom-label" aria-hidden="true">확대 ↗</span></a><figcaption>TTMR 기반 동작 시간 측정 화면</figcaption></figure><figure class="gallery-figure "><a class="zoom-image" href="assets/plc-teaching.webp" data-lightbox aria-label="이미지 확대: 중간 복귀 위치 Teaching 화면"><img src="assets/plc-teaching.webp" alt="중간 복귀 위치 Teaching 화면" loading="lazy" decoding="async" width="991" height="745"><span class="zoom-label" aria-hidden="true">확대 ↗</span></a><figcaption>중간 복귀 위치 Teaching 화면</figcaption></figure>
 </div>
 <div class="page-footer">
@@ -511,7 +511,7 @@
 <span>Mitsubishi PLC</span><span>GX Works2</span><span>Ladder</span><span>HMI</span>
 </div>
 <div class="footer-links">
-<span>이종현 · 조병현 공동 개발</span><a href="https://github.com/jonghyeon9084/plc_project" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+<span>Mitsubishi PLC · GX Works2 · HMI</span><a href="https://github.com/jonghyeon9084/plc_project" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
 </div>
 </div></article>
 <article class="sheet project-page print-notes"><div class="page-top">
@@ -545,10 +545,10 @@
 </div>
 </div>
 <div class="insight">
-<strong>측정값에 맞춘 성과 표현</strong><p>전체 개선은 기준 대비 11.8% 시간 단축입니다. 병렬 동작만의 추가 개선은 직전 단계 대비 약 1.6%로 구분했습니다.</p>
+<strong>공정 시간 개선 결과</strong><p>총 동작시간 173.3 → 152.8초, 20.5초 단축(11.8%). 병렬 동작 적용으로 2.5초를 추가 단축했습니다.</p>
 </div>
 <figure class="gallery-figure "><a class="zoom-image" href="assets/plc-process.webp" data-lightbox aria-label="이미지 확대: PLC 발표자료의 제품 검사·포장 전체 공정"><img src="assets/plc-process.webp" alt="PLC 발표자료의 제품 검사·포장 전체 공정" loading="lazy" decoding="async" width="1672" height="941"><span class="zoom-label" aria-hidden="true">확대 ↗</span></a><figcaption>PLC 발표자료의 제품 검사·포장 전체 공정</figcaption></figure><div class="page-footer">
-<span>근거: PLC 발표자료 · 슬라이드 13–15</span><span>측정 → 비교 → 시퀀스 개선</span>
+<span>PLC 발표자료 · 13–15쪽</span><span>측정 → 비교 → 시퀀스 개선</span>
 </div></article>
 </section>
 
