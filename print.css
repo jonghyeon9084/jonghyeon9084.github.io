@@ -1,6 +1,6 @@
-/* A single portrait print system, independent of screen and mobile breakpoints. */
+/* One landscape slide per sheet, independent of screen and mobile breakpoints. */
 @page {
-  size: A4 portrait;
+  size: A4 landscape;
   margin: 14mm 13mm 16mm;
   @top-left { content: 'LEE JONGHYEON'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
   @top-right { content: 'ROBOTICS / PLC'; font: 7pt Arial, sans-serif; letter-spacing: 1pt; color: #737373; }
@@ -19,8 +19,8 @@ main { width: auto; max-width: none; margin: 0; padding: 0; }
 .portrait-panel { display: block; width: 48mm; max-width: none; }
 .portrait { width: 48mm; height: auto; max-height: 65mm; }
 .portrait-caption strong { font-size: 12pt; }.portrait-caption small { font-size: 9pt; }
-/* Profile follows the compact introduction on the first page. */
-.profile { break-before: auto; margin-top: 10mm; }
+/* The profile has its own slide. */
+.profile { break-before: page; margin-top: 0; }
 .profile > .eyebrow, .contact-heading { display: none; }
 .profile-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 9mm; padding-top: 5mm; }
 .profile-grid h2 { font-size: 18pt; }.profile-grid > div > p:not(.profile-title), .profile-title { font-size: 9pt; }
@@ -74,7 +74,7 @@ table { margin: 3mm 0; }th, td { padding: 2mm; font-size: 9pt; }caption { font-s
 /* Editorial typography, consistent page structure, and a compact cover. */
 :root { --ink:#202020; --accent:#303030; --muted:#686868; --line:#dedede; --soft:#f2f2f2; }
 body { color:var(--ink); }
-.project-page, .project-page + .project-page { display:flex; flex-direction:column; min-height:259mm; }
+.project-page, .project-page + .project-page { display:flex; flex-direction:column; min-height:180mm; }
 .project-page > * { flex-shrink:0; }
 .project-page .two-col { flex:0 0 auto; }
 .page-top { padding:3mm 0 0; border-top:1.2mm solid var(--ink); margin-bottom:5mm; }
@@ -136,7 +136,7 @@ h3 { font-weight:700; }
 .portrait-caption { padding:3mm 0; border:0; }
 .portrait-caption strong { font-size:10pt; }.portrait-caption small { font-size:7pt; margin-left:2mm; }
 .portrait-caption > span { font-size:6.5pt; letter-spacing:0; }
-.profile { margin-top:9mm; }
+.profile { margin-top:0; }
 .profile-grid { border-top:1.2mm solid var(--ink); padding-top:6mm; grid-template-columns:.9fr 1.1fr; gap:9mm; }
 .profile-grid > div > h2 { font-size:17pt; margin-bottom:1mm; }
 .profile-grid > div > p:not(.profile-title) { font-size:9pt; line-height:1.8; }
@@ -152,7 +152,7 @@ h3 { font-weight:700; }
 .print-project-list small { margin-left:auto; font:8pt Arial,sans-serif; color:var(--muted); }
 .site-footer { display:none; }
 
-/* Keep dense media pages within the portrait page, including their footers. */
+/* Compact media and notes. */
 .page-top { break-inside:avoid; }
 .featured .full-bleed img { height:30mm; max-height:30mm; }
 .featured .print-video-poster { height:28mm; }
@@ -161,3 +161,90 @@ h3 { font-weight:700; }
 .print-notes:has(.media-story) .numbered li { margin-bottom:3mm; }
 .print-notes:has(.media-story) .pipeline-card { gap:2mm; padding:5mm; }
 .print-notes:has(.media-story) .insight { margin-bottom:4mm; }
+
+
+/* Landscape pagination and wide layouts. Keep content visible if it ever overflows. */
+.sheet, .project-page, .project-page + .project-page {
+  min-height: 180mm;
+  break-before: page;
+  break-inside: avoid-page;
+}
+.intro { break-before: auto; padding: 10mm; grid-template-columns: 1fr 62mm; }
+.portrait-panel, .portrait { width: 62mm; }
+.portrait { max-height: 85mm; }
+.profile > .eyebrow, .contact-heading { display: block; }
+.contact-heading { margin-bottom: 5mm; }
+.contact-heading h2 { font-size: 23pt; }
+.contact-heading p { font-size: 9pt; }
+.profile-grid { padding-top: 4mm; }
+.profile-facts > div { padding: 2mm 0; }
+.skills { margin-top: 4mm; }
+.print-project-list { margin-top: 4mm; }
+h2 { font-size: 22pt; margin-bottom: 3mm; }
+.page-top { margin-bottom: 4mm; }
+.print-notes > .two-col { margin: 4mm 0; gap: 9mm; }
+.print-notes .two-col p { font-size: 9pt; line-height: 1.65; }
+.print-notes .case-line p { font-size: 9pt !important; }
+.print-notes h3 { font-size: 11pt; margin-bottom: 3mm; }
+.print-notes .insight { margin: 3mm 0; padding: 3mm 4mm; }
+.print-notes .insight p { font-size: 8pt; line-height: 1.65; }
+.print-notes .metric { margin-top: 3mm; padding: 4mm; }
+.print-notes .status-panel > div { padding: 3mm 0; }
+.print-notes .step-flow > span { padding: 2mm; }
+.print-notes .vertical { margin: 3mm 0; }
+.print-notes .result-grid > div { padding: 5mm 3mm; }
+.print-notes .bar-chart { padding: 4mm; }
+.print-notes .bar-chart > div { margin-bottom: 4mm; }
+.print-notes .gallery-figure img { max-height: 32mm; }
+.print-notes .media-story { margin: 3mm 0; grid-template-columns: 1fr 2fr; }
+.print-notes .media-story h3 { font-size: 12pt; }
+.print-notes .media-story p { font-size: 8pt; }
+.print-notes:has(.media-story) .pipeline-card { padding: 3mm; gap: 1mm; }
+.print-notes:has(.media-story) .pipeline-card b { padding: 1mm; }
+.print-notes:has(.media-story) .numbered li { margin-bottom: 2mm; }
+
+/* Media-heavy overviews use the width of the paper for a separate media column. */
+.print-overview:has(> .video-figure) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: 8mm;
+  align-content: start;
+}
+.print-overview:has(> .video-figure) > * { min-width: 0; }
+.print-overview:has(> .video-figure) > .page-top { grid-column: 1 / -1; grid-row: 1; }
+.print-overview:has(> .video-figure) > .project-heading { grid-column: 1 / -1; grid-row: 2; }
+.print-overview:has(> .video-figure) > .lead,
+.print-overview:has(> .video-figure) > .award { grid-column: 1; grid-row: 3; }
+.print-overview:has(> .video-figure) > .two-col { grid-column: 1; grid-row: 4; align-self: start; }
+.print-overview:has(> .video-figure) > .video-figure { grid-column: 2; grid-row: 3 / 5; align-self: start; }
+.print-overview:has(> .video-figure) > .page-footer { grid-column: 1 / -1; grid-row: 5; align-self: end; }
+.print-overview .print-video-poster { height: 48mm; }
+.print-overview .video-figure figcaption { flex-wrap: wrap; gap: 1mm; }
+.print-overview .editorial-panel { padding: 3mm; }
+.print-overview .editorial-panel h3 { font-size: 12pt; margin-bottom: 3mm; }
+.print-overview .feature-grid { gap: 2mm; margin-bottom: 3mm; }
+.print-overview .case-line { padding: 2mm 0; }
+.featured > .full-bleed { grid-column: 2; grid-row: 3 / 5; align-self: start; }
+.featured > .project-meta { grid-column: 1; grid-row: 4; align-self: start; }
+.featured > .two-col { margin-top: 19mm; }
+.featured.print-overview > .video-figure { grid-row: 3 / 5; margin-top: 48mm; }
+.featured .full-bleed img { height: 35mm; max-height: 35mm; }
+.featured .print-video-poster { height: 35mm; }
+.featured .architecture { padding: 3mm; }
+.featured .arch-pair { gap: 2mm; }
+.featured .arch-pair b { font-size: 7pt; letter-spacing: 0; }
+.featured .arch-next { gap: 2mm; }
+#ai-two .print-overview > .two-col > .gallery-figure { grid-column: 2; grid-row: 1; }
+#ai-two .print-overview > .two-col { grid-template-columns: 1.4fr 1fr; }
+#ai-two .print-overview > .media-gallery,
+#plc .print-overview > .media-gallery { grid-column: 2; grid-row: 4; margin-top: 60mm; }
+#ai-two .print-overview .media-gallery img { height: 28mm; }
+#plc .print-overview > .two-col { grid-template-columns: 1.4fr 1fr; }
+#plc .print-overview .plc-photo img { height: 42mm; }
+#plc .print-overview .media-gallery img { height: 26mm; }
+
+.print-notes:has(.media-story) .numbered p { margin: 1mm 0 0; }
+.print-notes:has(.media-story) .media-story img { max-height: 25mm; }
+#plc .print-notes .bar-chart > div { gap: 2mm; margin-bottom: 3mm; }
+#plc .print-notes > .gallery-figure img { max-height: 24mm; }
